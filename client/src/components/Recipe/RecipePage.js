@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import RecipeService from '../../services/RecipeService';
+import MoonLoader from "react-spinners/MoonLoader";
+
 
 const RecipePage = (props) => {
     const [recipe, setRecipe] = useState(null);
@@ -19,7 +21,9 @@ const RecipePage = (props) => {
 
     if (recipe == null) {
         return (
-            <div>loading recipe</div>
+            <div>
+                <MoonLoader/>
+            </div>
         );
     }
     const recipeToShow = recipe.meals[0];

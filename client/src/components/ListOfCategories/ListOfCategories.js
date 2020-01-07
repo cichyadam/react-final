@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
+import MoonLoader from "react-spinners/MoonLoader";
+
 
 const ListOfCategories = () => {
     const [categories, updateCategories] = useState([]);
@@ -30,7 +32,9 @@ const ListOfCategories = () => {
 
     if (categories.length === 0) {
         return (
-            <div>Loading categories</div>
+            <div>
+                <MoonLoader/>
+            </div>
         );
     }
     return (

@@ -17,7 +17,12 @@ const ListOfIngredients = () => {
             console.log(err.message);
         }
     };
+    if(searchedIngredientRecipes === null){
+        return (
+            <div>Any recipes found related to searched ingredient</div>
+        );
 
+    }
     return (
         <div>
             <form
