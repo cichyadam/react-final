@@ -17,12 +17,7 @@ const ListOfIngredients = () => {
             console.log(err.message);
         }
     };
-    if(searchedIngredientRecipes === null){
-        return (
-            <div>Any recipes found related to searched ingredient</div>
-        );
 
-    }
     return (
         <div>
             <form
@@ -40,6 +35,7 @@ const ListOfIngredients = () => {
                 }}
             >
                 {(searchedIngredientRecipes.length !== 0
+                    && searchedIngredientRecipes.meals !== null
                     && searchedIngredientRecipes.meals.map((recipe) => (
                         <div key={recipe.idMeal} id={recipe.idMeal}>
                             <img
@@ -56,7 +52,7 @@ const ListOfIngredients = () => {
                         </div>
                     ))
                 ) || (
-                    <div>There are no recipes matching your criteria</div>
+                    <div>There are no recipes found yet or we could not find any recipes to searched ingredient</div>
                 )}
             </div>
         </div>
