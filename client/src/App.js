@@ -19,17 +19,23 @@ function App() {
                                 <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <Link to="/ingredient">Search by ingredient</Link>
+                                <div className="dropdown">
+                                    <a>Search by</a>
+                                    <div className="dropdownContent">
+                                        <Link to="/ingredient">Ingredient</Link>
+                                        <Link to="/category">Category</Link>
+                                        <Link to="/cuisine">Cuisine</Link>
+                                    </div>
+                                </div>
+
                             </li>
-                            <li>
-                                <Link to="/category">Search by category</Link>
-                            </li>
-                            <li>
-                                <Link to="/cuisine">Search by cuisine</Link>
-                            </li>
+
                         </ul>
                     </nav>
                     <Switch>
+                        <Route exact path="/">
+
+                        </Route>
                         <Route path="/ingredient">
                             <ListOfIngredients />
                         </Route>

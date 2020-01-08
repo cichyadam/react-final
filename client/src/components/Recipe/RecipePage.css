@@ -1,0 +1,12 @@
+.Recipe{
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.Recipe img{
+    width: 80%;
+}
+.strong{
+    font-weight: bold;
+    font-size: 20px;
+}
