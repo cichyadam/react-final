@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import RecipeService from '../../services/RecipeService';
 import MoonLoader from "react-spinners/MoonLoader";
+import '../ListOfCategories/ListOfResults.css'
+import './RecipePage.css'
 
 
 const RecipePage = (props) => {
@@ -21,7 +23,7 @@ const RecipePage = (props) => {
 
     if (recipe == null) {
         return (
-            <div>
+            <div className="loader">
                 <MoonLoader/>
             </div>
         );
@@ -45,22 +47,30 @@ const RecipePage = (props) => {
     }
     ingredients.pop();
     return (
-        <div className="Recipe">
-            <h2>{recipeToShow.strMeal}</h2>
-            <img
-                src={recipeToShow.strMealThumb}
-                alt={recipeToShow.strMeal}
-            />
-            <ul>
-                {ingredients.map((ingredient) => (
-                    <li key={ingredient.id}>
-                        <span>{ingredient.measurement}</span>
-                        <span>&nbsp;</span>
-                        {ingredient.ingredient}
-                    </li>
-                ))}
-            </ul>
-            <p>{recipeToShow.strInstructions}</p>
+        <div className="page">
+            <div className="Recipe">
+                <div className="image">
+                    <img
+                        src={recipeToShow.strMealThumb}
+                        alt={recipeToShow.strMeal}
+                    />
+                </div>
+                <div className="instructions">
+                    <h2>{recipeToShow.strMeal}</h2>
+                    <p className="strong">Ingredients:</p>
+                    <ul>
+                        {ingredients.map((ingredient) => (
+                            <li key={ingredient.id}>
+                                <span>{ingredient.measurement}</span>
+                                <span>&nbsp;</span>
+                                {ingredient.ingredient}
+                            </li>
+                        ))}
+                    </ul>
+                    <p className="strong">Instructions:</p>
+                    <p>{recipeToShow.strInstructions}</p>
+                </div>
+            </div>
         </div>
 
     );

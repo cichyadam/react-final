@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import {MoonLoader} from "react-spinners";
+import '../ListOfCategories/SearchForm.css'
 
 const ListOfCuisines = () => {
     const [cuisines, updateCuisines] = useState([]);
@@ -29,17 +30,19 @@ const ListOfCuisines = () => {
         }
     };
 
-    if (cuisines.length === 0) {
+    if (cuisines.length === 0 || cuisines.meals === null) {
         return (
-            <div>
+            <div className="loader">
                 <MoonLoader/>
             </div>
         );
     } return (
-        <div>
+        <div className="page">
             <form
+                className="searchForm"
                 onSubmit={(event) => handleCuisine(event)}
             >
+                <p className="">Search by cuisine:</p>
                 <select id="cuisines" name="cuisines">
                     {
                         cuisines.meals.map((cuisine, index) => (
@@ -52,7 +55,7 @@ const ListOfCuisines = () => {
                         ))
                     }
                 </select>
-                <button type="submit">Search by cuisine</button>
+                <button type="submit">Search</button>
             </form>
             <div
                 className="recipes-container"

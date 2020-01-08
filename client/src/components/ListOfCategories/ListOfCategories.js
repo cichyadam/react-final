@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import MoonLoader from "react-spinners/MoonLoader";
-
+import './SearchForm.css';
+import './ListOfResults.css';
 
 const ListOfCategories = () => {
     const [categories, updateCategories] = useState([]);
@@ -30,18 +31,20 @@ const ListOfCategories = () => {
     };
 
 
-    if (categories.length === 0) {
+    if (categories.length === 0 || categories.meals === null) {
         return (
-            <div>
+            <div className="loader">
                 <MoonLoader/>
             </div>
         );
     }
     return (
-        <div>
+        <div className="page">
             <form
+                className="searchForm"
                 onSubmit={(event) => handleCategory(event)}
             >
+                <p className="">Search by category:</p>
                 <select id="categories" name="categories">
                     {
                         categories.meals.map((category, index) => (
@@ -54,15 +57,12 @@ const ListOfCategories = () => {
                         ))
                     }
                 </select>
-                <button type="submit">Search by category</button>
+                <button type="submit">Search</button>
             </form>
 
             <div
                 className="recipes-container"
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4,1fr)',
-                }}
+
             >
                 {(searchedCategoryRecipes.length !== 0
                     && searchedCategoryRecipes.meals.map((recipe) => (
@@ -81,7 +81,7 @@ const ListOfCategories = () => {
                         </div>
                     ))
                 ) || (
-                    <div>There are no recipes matching your criteria</div>
+                    <div className="noResult">There are no recipes matching your criteria</div>
                 )}
             </div>
         </div>

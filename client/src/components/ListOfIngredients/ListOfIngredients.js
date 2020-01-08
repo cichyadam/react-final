@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchService from '../../services/SearchService';
+import '../ListOfCategories/SearchForm.css'
 
 const ListOfIngredients = () => {
     const [searchedIngredientRecipes, setSearchedIngredient] = useState([]);
@@ -19,13 +20,14 @@ const ListOfIngredients = () => {
     };
 
     return (
-        <div>
+        <div className="page">
             <form
                 className="searchForm"
                 onSubmit={(event) => handleIngredient(event)}
             >
+                <p>Search by ingredient:</p>
                 <input id="ingredientSearch" type="text" />
-                <button type="submit">Search by ingredient</button>
+                <button type="submit">Search</button>
             </form>
             <div
                 className="recipes-container"
@@ -52,7 +54,7 @@ const ListOfIngredients = () => {
                         </div>
                     ))
                 ) || (
-                    <div>There are no recipes found yet or we could not find any recipes to searched ingredient</div>
+                    <div className="noResult">There are no recipes found yet or we could not find any recipes to searched ingredient</div>
                 )}
             </div>
         </div>
