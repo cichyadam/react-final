@@ -30,5 +30,17 @@ module.exports = (app) => {
     app.get('/cuisines',
         ListController.listCuisines,
     );
+    app.post('/save-recipe',
+        RecipeControllerPolicy.authorize,
+        RecipeController.saveRecipe,
+    );
+    app.get('/get-favourites',
+        RecipeControllerPolicy.authorize,
+        RecipeController.getSavedRecipes,
+    );
+    app.post('/remove-recipe',
+        RecipeControllerPolicy.authorize,
+        RecipeController.removeSavedRecipe,
+    );
     // TODO - Add 'save' route to save recipe with policy
 };
