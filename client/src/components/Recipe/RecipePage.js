@@ -41,7 +41,7 @@ const RecipePage = (props) => {
             measurement,
             ingredient,
         });
-        if (ingredient === '') {
+        if (ingredient === '' || ingredient === null) {
             break;
         }
     }
