@@ -31,7 +31,7 @@ module.exports = {
     async login (req, res) {
         const { username, password } = req.body;
         if (typeof username !== 'string' || typeof password !== 'string') {
-            res.status(500).send({
+            res.status(403).json({
                 error: 'invalid type'
             })
         } else {

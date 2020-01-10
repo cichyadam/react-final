@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import RecipeService from '../../services/RecipeService';
-import MoonLoader from "react-spinners/MoonLoader";
-import '../ListOfCategories/ListOfResults.css'
-import './RecipePage.css'
+import MoonLoader from 'react-spinners/MoonLoader';
+import '../ListOfCategories/ListOfResults.css';
+import './RecipePage.css';
+import Recipe from './Recipe';
 
 
 const RecipePage = (props) => {
@@ -49,27 +50,7 @@ const RecipePage = (props) => {
     return (
         <div className="page">
             <div className="Recipe">
-                <div className="image">
-                    <img
-                        src={recipeToShow.strMealThumb}
-                        alt={recipeToShow.strMeal}
-                    />
-                </div>
-                <div className="instructions">
-                    <h2>{recipeToShow.strMeal}</h2>
-                    <p className="strong">Ingredients:</p>
-                    <ul>
-                        {ingredients.map((ingredient) => (
-                            <li key={ingredient.id}>
-                                <span>{ingredient.measurement}</span>
-                                <span>&nbsp;</span>
-                                {ingredient.ingredient}
-                            </li>
-                        ))}
-                    </ul>
-                    <p className="strong">Instructions:</p>
-                    <p>{recipeToShow.strInstructions}</p>
-                </div>
+                    <Recipe ingredients={ingredients} recipeToShow={recipeToShow} token={props.token} recipeId={props.match.params.id}/>
             </div>
         </div>
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import MoonLoader from "react-spinners/MoonLoader";
-import './SearchForm.css';
 import './ListOfResults.css';
+import SearchFormCategory from '../SearchForm/SearchFormCategory';
+import SearchResultsCategories from '../SearchResults/SearchResultsCategories';
 
 const ListOfCategories = () => {
     const [categories, updateCategories] = useState([]);
@@ -40,50 +40,8 @@ const ListOfCategories = () => {
     }
     return (
         <div className="page">
-            <form
-                className="searchForm"
-                onSubmit={(event) => handleCategory(event)}
-            >
-                <p className="">Search by category:</p>
-                <select id="categories" name="categories">
-                    {
-                        categories.meals.map((category, index) => (
-                            <option
-                                key={`type-${index + 1}`}
-                                name={category.strCategory}
-                            >
-                                {category.strCategory}
-                            </option>
-                        ))
-                    }
-                </select>
-                <button type="submit">Search</button>
-            </form>
-
-            <div
-                className="recipes-container"
-
-            >
-                {(searchedCategoryRecipes.length !== 0
-                    && searchedCategoryRecipes.meals.map((recipe) => (
-                        <div key={recipe.idMeal} id={recipe.idMeal}>
-                            <img
-                                src={recipe.strMealThumb}
-                                alt={recipe.strMeal}
-                                style={{
-                                    width: '50%',
-                                }}
-                            />
-                            <h3>{recipe.strMeal}</h3>
-                            <NavLink to={`recipe/${recipe.idMeal}`}>
-                                <button type="submit">See recipe</button>
-                            </NavLink>
-                        </div>
-                    ))
-                ) || (
-                    <div className="noResult">There are no recipes matching your criteria</div>
-                )}
-            </div>
+            <SearchFormCategory submitMethod={handleCategory} categories={categories} />
+            <SearchResultsCategories searchedCategoryRecipes={searchedCategoryRecipes}/>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchService from '../../services/SearchService';
-import '../ListOfCategories/SearchForm.css'
+import '../SearchForm/SearchForm.css'
 
 const ListOfIngredients = () => {
     const [searchedIngredientRecipes, setSearchedIngredient] = useState([]);
