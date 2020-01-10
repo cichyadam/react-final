@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Recipe = sequelize.define('Recipe', {
-        // TODO - decide if it should be name or id
+        recipe_id: DataTypes.STRING,
         name: DataTypes.STRING,
     });
 
