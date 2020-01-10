@@ -1,32 +1,29 @@
 const jwt = require('jsonwebtoken');
-
 const { Recipe } = require('../models');
-
 module.exports = {
     async saveRecipe (req, res) {
         const { token } = req.query;
-
         const tokenDecoded = jwt.decode(token, { complete: true });
         const userId = tokenDecoded.payload.id;
-
         if (!userId) {
             res.status(500).json({
                 error: 'Invalid user'
             });
         } else {
-            const { id, name } = req.body;
+            const { recipe_id, name } = req.body;
             const recipe = {
-                recipe_id: id,
+                recipe_id,
                 name,
                 user_id: userId,
             };
             try {
-                await Recipe.create(recipe);
-
-                res.status(200).json({
-                    message: 'Recipe added to favourites',
-                    timestamp: Date.now(),
+                const response = await Recipe.findOrCreate({
+                    where: {
+                        recipe_id: recipe.recipe_id
+                    },
+                    defaults: recipe
                 });
+                res.status(200).send(response);
             } catch (err) {
                 res.status(500).json(err);
             }
@@ -34,10 +31,8 @@ module.exports = {
     },
     async getSavedRecipes (req, res) {
         const { token } = req.query;
-
         const tokenDecoded = jwt.decode(token, { complete: true });
         const userId = tokenDecoded.payload.id;
-
         try {
             const savedRecipes = await Recipe.findAll({
                 where: {
