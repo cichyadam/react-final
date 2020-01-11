@@ -25,6 +25,9 @@ module.exports = {
     "indent":["error", 4],
     "react/jsx-indent":["error", 4],
     "react/jsx-indent-props":["error",4],
-    "react/jsx-filename-extension":[1,{"extensions":[".js",".jsx"]}]
+    "react/jsx-filename-extension":[1,{"extensions":[".js",".jsx"]}],
+    "react/prop-types": 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-console": "off",
   },
 };

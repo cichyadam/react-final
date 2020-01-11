@@ -50,3 +50,8 @@ nav ul li a {
 .dropdown:hover .dropdownContent {
   display: block;
 }
+
+section{
+  margin: 100px auto;
+  max-width: 1300px;
+}

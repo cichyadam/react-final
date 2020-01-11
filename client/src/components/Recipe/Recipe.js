@@ -1,22 +1,26 @@
 import React from 'react';
-import SaveRecipe from "../SaveRecipe/SaveRecipe";
+import SaveRecipe from '../SaveRecipe/SaveRecipe';
 
-export default class Recipe extends React.Component{
+// eslint-disable-next-line react/prefer-stateless-function
+export default class Recipe extends React.Component {
     render() {
-        const {recipeToShow, ingredients, token, recipeId} = this.props;
+        const {
+            recipeToShow, ingredients, token, recipeId,
+        } = this.props;
 
         const recipeData = {
-            recipe_id : recipeId,
-            name: recipeToShow.strMeal
+            recipe_id: recipeId,
+            name: recipeToShow.strMeal,
         };
 
         return (
-            <React.Fragment>
+            <>
                 <div className="image">
                     <img
                         src={recipeToShow.strMealThumb}
                         alt={recipeToShow.strMeal}
                     />
+                    <SaveRecipe token={token} recipeData={recipeData} />
                 </div>
                 <div className="instructions">
                     <h2>{recipeToShow.strMeal}</h2>
@@ -32,9 +36,8 @@ export default class Recipe extends React.Component{
                     </ul>
                     <p className="strong">Instructions:</p>
                     <p>{recipeToShow.strInstructions}</p>
-                    <SaveRecipe token={token} recipeData={recipeData}/>
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }

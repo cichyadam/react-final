@@ -1,10 +1,10 @@
 import api from './api';
 
 export default {
-    register (credentials) {
+    register(credentials) {
         return api.post('/register', credentials);
     },
-    login (credentials) {
+    login(credentials) {
         return api.post('/login', credentials);
     },
 };

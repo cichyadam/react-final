@@ -1,14 +1,14 @@
 import React from 'react';
 import './SearchForm.css';
-
-export default class SearchFormCategory extends React.Component{
+// eslint-disable-next-line react/prefer-stateless-function
+export default class SearchFormCategory extends React.Component {
     render() {
-        const {submitMethod,cuisines} = this.props;
+        const { submitMethod, cuisines } = this.props;
         return (
-            <React.Fragment>
+            <>
                 <form
                     className="searchForm"
-                    onSubmit={(event => submitMethod(event))}
+                    onSubmit={((event) => submitMethod(event))}
                 >
                     <p>Search by cuisine</p>
                     <select id="cuisines" name="cuisines">
@@ -25,7 +25,7 @@ export default class SearchFormCategory extends React.Component{
                     </select>
                     <button type="submit">Search</button>
                 </form>
-            </React.Fragment>
+            </>
         );
     }
 }

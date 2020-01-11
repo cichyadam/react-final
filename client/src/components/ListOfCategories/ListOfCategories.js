@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import MoonLoader from 'react-spinners/MoonLoader';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
-import MoonLoader from "react-spinners/MoonLoader";
 import './ListOfResults.css';
 import SearchFormCategory from '../SearchForm/SearchFormCategory';
 import SearchResultsCategories from '../SearchResults/SearchResultsCategories';
@@ -34,15 +34,15 @@ const ListOfCategories = () => {
     if (categories.length === 0 || categories.meals === null) {
         return (
             <div className="loader">
-                <MoonLoader/>
+                <MoonLoader />
             </div>
         );
     }
     return (
-        <div className="page">
+        <section className="section">
             <SearchFormCategory submitMethod={handleCategory} categories={categories} />
-            <SearchResultsCategories searchedCategoryRecipes={searchedCategoryRecipes}/>
-        </div>
+            <SearchResultsCategories searchedCategoryRecipes={searchedCategoryRecipes} />
+        </section>
     );
 };
 

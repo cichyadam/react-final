@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import RecipeService from '../../services/RecipeService';
 import MoonLoader from 'react-spinners/MoonLoader';
+import RecipeService from '../../services/RecipeService';
 import '../ListOfCategories/ListOfResults.css';
 import './RecipePage.css';
 import Recipe from './Recipe';
@@ -25,7 +25,7 @@ const RecipePage = (props) => {
     if (recipe == null) {
         return (
             <div className="loader">
-                <MoonLoader/>
+                <MoonLoader />
             </div>
         );
     }
@@ -47,12 +47,21 @@ const RecipePage = (props) => {
         }
     }
     ingredients.pop();
+
     return (
-        <div className="page">
-            <div className="Recipe">
-                    <Recipe ingredients={ingredients} recipeToShow={recipeToShow} token={props.token} recipeId={props.match.params.id}/>
+        <section className="section">
+            <div className="container">
+                <div className="Recipe">
+                    <Recipe
+                        ingredients={ingredients}
+                        recipeToShow={recipeToShow}
+                        token={props.token}
+                        recipeId={props.match.params.id}
+                    />
+                </div>
             </div>
-        </div>
+        </section>
+
 
     );
 };

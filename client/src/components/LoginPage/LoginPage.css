@@ -1,18 +1,12 @@
-.searchForm{
+.authForm{
     display: grid;
     justify-items: start;
     justify-content: center;
     padding: 25px 0;
 }
-.searchForm p{
-    font-size: 24px;
-}
-.searchForm input:focus{
-    outline: none;
-}
-.searchForm input{
+.authForm input{
     height: 30px;
-    width: 170px;
+    width: 150px;
     background-color: #fff;
     border-radius: 3px;
     padding-left: 20px;
@@ -23,20 +17,7 @@
     opacity: .94;
     padding-top: 4px;
 }
-.searchForm select {
-    height: 45px;
-    width: 250px;
-    background-color: #fff;
-    border-radius: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 16px;
-    color: #191919;
-    line-height: 25px;
-    opacity: .94;
-    padding-top: 4px;
-}
-.searchForm button{
+.authForm button{
     background-color: #000000;
     color: #fff;
     border-radius: 3px;
@@ -48,7 +29,8 @@
     justify-items: start;
     font-size: 14px;
     border: none;
-    margin: 10px 0;
+    margin-top: 20px;
 }
-
-
+.error{
+    color: orangered;
+}

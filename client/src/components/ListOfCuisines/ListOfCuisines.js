@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { MoonLoader } from 'react-spinners';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
-import {MoonLoader} from "react-spinners";
 import SearchFormCuisine from '../SearchForm/SearchFormCuisine';
-import SearchResultsCuisines from "../SearchResults/SearchResultsCuisines";
+import SearchResultsCuisines from '../SearchResults/SearchResultsCuisines';
 
 const ListOfCuisines = () => {
     const [cuisines, updateCuisines] = useState([]);
@@ -33,14 +33,14 @@ const ListOfCuisines = () => {
     if (cuisines.length === 0 || cuisines.meals === null) {
         return (
             <div className="loader">
-                <MoonLoader/>
+                <MoonLoader />
             </div>
         );
     } return (
-        <div className="page">
+        <section className="section">
             <SearchFormCuisine submitMethod={handleCuisine} cuisines={cuisines} />
             <SearchResultsCuisines searchedCuisineRecipes={searchedCuisineRecipes} />
-        </div>
+        </section>
 
 
     );
