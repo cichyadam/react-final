@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import RecipeService from '../../services/RecipeService';
+import './ProfilePage.css'
 
 export default class ProfilePage extends React.Component{
     constructor(props){
@@ -31,7 +32,8 @@ export default class ProfilePage extends React.Component{
         try{
             const data = {id}
             const response = (await RecipeService.removeRecipe(data,this.props.token)).data;
-            console.log(response)
+            console.log(response);
+            this.getFavourites();
         } catch (err){
 
         }
@@ -42,22 +44,40 @@ export default class ProfilePage extends React.Component{
         const {favourites} = this.state;
 
         return (
-            <div style={{
-                paddingTop: '60px',
-            }}>
-                <h1>Hi {username}</h1>
-                <h3>Your favourite recipes:</h3>
-                {
-                    favourites.map((recipe,index)=>(
-                        <div key={index}>
-                            <NavLink to={`recipe/${recipe.recipe_id}`}>
-                               <p>{recipe.name}</p>
-                            </NavLink>
-                            <button onClick={() => this.handleDelete(recipe.recipe_id)}>Delete from favourites</button>
-                        </div>
-                    ))
-                }
-            </div>
+            <section className="section profile">
+                <div className="container">
+                    <div className="profileInfo">
+                        <h1>Hi {username}</h1>
+                    </div>
+                    <div className="favourite-recipes">
+                        <h3>Your favourite recipes</h3>
+                        <table>
+                            <thead>
+                            <tr className="table-row">
+                                <th>Recipe name</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                favourites.map((recipe,index)=>(
+                                    <tr key={index}  className="table-row">
+                                        <td>
+                                            <NavLink to={`recipe/${recipe.recipe_id}`}>
+                                                {recipe.name}
+                                            </NavLink>
+                                        </td>
+                                        <td>
+                                            <a onClick={() => this.handleDelete(recipe.recipe_id)}>Delete</a>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
         );
     }
 }

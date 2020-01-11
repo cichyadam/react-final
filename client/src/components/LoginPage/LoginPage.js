@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
-
+import './LoginPage.css';
 import AuthService from '../../services/AuthService';
 
 export default class LoginPage extends React.Component{
@@ -51,16 +50,26 @@ export default class LoginPage extends React.Component{
 
 
         return (
-            <div className="page">
-                <div>{error}</div>
-                <form
-                    onSubmit={this.handleSubmit}
-                >
-                    <input name="username" type="text" onChange={this.handleChange}/>
-                    <input name="password" type="password" onChange={this.handleChange}/>
-                    <button>Login</button>
-                </form>
-            </div>
+            <section className="section login">
+                <div className="container">
+                    <form
+                        className="authForm"
+                        onSubmit={this.handleSubmit}
+                    >
+                        <h2>Login</h2>
+                        <div className="form-row">
+                            <p>Username:</p>
+                            <input name="username" type="text" onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-row">
+                            <p>Password:</p>
+                            <input name="password" type="password" onChange={this.handleChange}/>
+                        </div>
+                        <button>Login</button>
+                        <div className="error">{error}</div>
+                    </form>
+                </div>
+            </section>
         );
 
     }

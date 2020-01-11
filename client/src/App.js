@@ -12,6 +12,7 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import LoginPage from './components/LoginPage/LoginPage';
 import LogoutPage from './components/LogoutPage/LogoutPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import HomePage from './components/HomePage/HomePage';
 
 class App extends React.Component {
 
@@ -66,7 +67,7 @@ class App extends React.Component {
                                 </li>
                                 <li>
                                     <div className="dropdown">
-                                        <a href="">Search by</a>
+                                        <a href="/ingredient">Search by</a>
                                         <div className="dropdownContent">
                                             <Link to="/ingredient">Ingredient</Link>
                                             <Link to="/category">Category</Link>
@@ -79,6 +80,7 @@ class App extends React.Component {
                         </nav>
                         <Switch>
                             <Route exact path="/">
+                                <HomePage/>
                             </Route>
                             <Route path="/register">
                                 <RegisterPage token={token} saveToken={this.saveToken} saveUser={this.saveUser}/>

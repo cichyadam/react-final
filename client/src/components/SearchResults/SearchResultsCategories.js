@@ -1,9 +1,9 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
-
-export default class SearchResultsCategories extends React.Component{
+import { NavLink } from 'react-router-dom';
+// eslint-disable-next-line react/prefer-stateless-function
+export default class SearchResultsCategories extends React.Component {
     render() {
-        const {searchedCategoryRecipes} = this.props;
+        const { searchedCategoryRecipes } = this.props;
         return (
             <div
                 className="recipes-container"

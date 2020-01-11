@@ -1,0 +1,16 @@
+.profileInfo h1,
+.favourite-recipes h3{
+    text-align: center;
+}
+.favourite-recipes table{
+    margin: 0 auto;
+}
+.table-row th,
+.table-row td{
+    padding: 16px;
+}
+tr td a{
+    cursor: pointer;
+    color: #000000;
+    text-decoration: none;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-
-
+import '../LoginPage/LoginPage.css';
 import AuthService from '../../services/AuthService';
 
 export default class RegisterPage extends React.Component{
@@ -49,17 +48,26 @@ export default class RegisterPage extends React.Component{
         }
 
         return(
-            <div className="page">
-                <div>{error}</div>
-                <form
-                    onSubmit={this.handleSubmit}
-                >
-                    <input name="username" type="text" onChange={this.handleChange}/>
-                    <input name="password" type="password" onChange={this.handleChange}/>
-                    <button>Register</button>
-                </form>
-
-            </div>
+            <section className="section register">
+                <div className="container">
+                    <form
+                        className="authForm"
+                        onSubmit={this.handleSubmit}
+                    >
+                        <h2>Register</h2>
+                        <div className="form-row">
+                            <p>Username:</p>
+                            <input name="username" type="text" onChange={this.handleChange}/>
+                        </div>
+                        <div className="form-row">
+                            <p>Password:</p>
+                            <input name="password" type="password" onChange={this.handleChange}/>
+                        </div>
+                        <button>Register</button>
+                        <div className="error" >{error}</div>
+                    </form>
+                </div>
+            </section>
         );
 
     }

@@ -21,6 +21,9 @@
     align-items: center;
     margin: 10px 0;
 }
+.recipes-container a {
+    text-decoration: none;
+}
 .recipes-container button{
     background-color: #000000;
     color: #fff;
