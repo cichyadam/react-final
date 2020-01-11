@@ -55,3 +55,17 @@ section{
   margin: 100px auto;
   max-width: 1300px;
 }
+
+.float_box {
+  position: fixed;
+  z-index: 10;
+  background-color: orange;
+}
+
+.float-right {
+  right: 0;
+}
+
+.float-bottom {
+  bottom: 0;
+}
