@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchForm.css';
-// eslint-disable-next-line react/prefer-stateless-function
+
 const SearchFormCategory = (props) => {
     const { submitMethod, categories } = props;
     return (
@@ -12,22 +12,20 @@ const SearchFormCategory = (props) => {
             >
                 <div className="input-wrapper">
                     <select id="categories" name="categories">
-                        {
-                            categories.meals.map((category, index) => (
-                                <option
-                                    key={`type-${index + 1}`}
-                                    name={category.strCategory}
-                                >
-                                    {category.strCategory}
-                                </option>
-                            ))
-                        }
+                        {categories.meals.map((category, index) => (
+                            <option
+                                key={`type-${index + 1}`}
+                                name={category.strCategory}
+                            >
+                                {category.strCategory}
+                            </option>
+                        ))}
                     </select>
                     <button className="btn btn-prim">Search</button>
                 </div>
             </form>
         </div>
     );
-}
+};
 
 export default SearchFormCategory;

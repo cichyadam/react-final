@@ -1,5 +1,5 @@
-const api = require('../api/api');
 const fetch = require('node-fetch');
+const api = require('../api/api');
 
 module.exports = {
     async getItem(req, res) {
@@ -7,10 +7,10 @@ module.exports = {
             const itemId = req.params.id;
             const url = `${api.api.item}${itemId}`;
             fetch(url)
-                .then(response => response.json())
-                .then(data => res.send(data))
+                .then((response) => response.json())
+                .then((data) => res.send(data));
         } catch (err) {
-            res.status(500).json(err)
+            res.status(500).json(err);
         }
-    }
-}
+    },
+};

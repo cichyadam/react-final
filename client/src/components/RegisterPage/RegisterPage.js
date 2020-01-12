@@ -23,7 +23,7 @@ export default class RegisterPage extends React.Component{
         const user = {
             username,
             password
-        }
+        };
         try{
             const response = (await AuthService.register(user)).data;
             const token = response.token;
@@ -69,6 +69,5 @@ export default class RegisterPage extends React.Component{
                 </div>
             </section>
         );
-
-    }
-}
+    };
+};

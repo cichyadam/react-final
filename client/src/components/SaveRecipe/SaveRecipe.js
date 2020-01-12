@@ -6,7 +6,7 @@ export default class SaveRecipe extends React.Component {
         super(props);
         this.state = {
             message: '',
-            status: ''
+            status: '',
         }
     };
 
@@ -14,7 +14,7 @@ export default class SaveRecipe extends React.Component {
         const recipe = {
             recipe_id: this.props.recipeData.recipe_id,
             name: this.props.recipeData.name,
-        }
+        };
         const response = (await RecipeService.saveRecipe(recipe, this.props.token)).data;
 
         if(response[1]){
@@ -28,22 +28,20 @@ export default class SaveRecipe extends React.Component {
                 status: 'warning'
             })
         }
+    };
 
-
-    }
     render() {
         const {message,status} = this.state;
         if (this.props.token === null) {
             return(
                 <p>Login to save a recipe to your favourites</p>
             );
-        };
-            return (
-                <React.Fragment>
-                    <button className="btn btn-prim" onClick={this.handleSave}>Save to favourites</button>
-                    <div className={status}>{message}</div>
-                </React.Fragment>
-
-            )
-    }
-}
+        }
+        return (
+            <React.Fragment>
+                <button className="btn btn-prim" onClick={this.handleSave}>Save to favourites</button>
+                <div className={status}>{message}</div>
+            </React.Fragment>
+        );
+    };
+};

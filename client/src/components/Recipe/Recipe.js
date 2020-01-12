@@ -44,6 +44,6 @@ const Recipe = (props) => {
             </div>
         </div>
     );
-}
+};
 
 export default Recipe;

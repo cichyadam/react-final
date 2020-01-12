@@ -2,17 +2,17 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 const config = require('../config/config');
 
-function jwtSignUser (user) {
+function jwtSignUser(user) {
     return jwt.sign(user, config.authentication.jwtSecret);
 }
 
 module.exports = {
-    async register (req, res) {
+    async register(req, res) {
         const { username, password } = req.body;
         if (typeof username !== 'string' || typeof password !== 'string') {
             res.status(500).send({
-                error: 'invalid type'
-            })
+                error: 'invalid type',
+            });
         } else {
             try {
                 const user = await User.create(req.body);
@@ -28,12 +28,12 @@ module.exports = {
             }
         }
     },
-    async login (req, res) {
+    async login(req, res) {
         const { username, password } = req.body;
         if (typeof username !== 'string' || typeof password !== 'string') {
             res.status(403).json({
-                error: 'invalid type'
-            })
+                error: 'invalid type',
+            });
         } else {
             try {
                 const user = await User.findOne({

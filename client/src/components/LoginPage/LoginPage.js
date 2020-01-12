@@ -4,7 +4,7 @@ import './LoginPage.css';
 import AuthService from '../../services/AuthService';
 
 export default class LoginPage extends React.Component{
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             username: null,
@@ -17,13 +17,14 @@ export default class LoginPage extends React.Component{
         this.setState({[event.target.name]:event.target.value})
     };
 
-    handleSubmit = async (event) =>{
+    handleSubmit = async (event) => {
         event.preventDefault();
         const {username, password} = this.state;
         const user = {
             username,
             password
-        }
+        };
+
         try{
             const response = (await AuthService.login(user)).data;
             const token = response.token;
@@ -40,15 +41,12 @@ export default class LoginPage extends React.Component{
     };
 
     render() {
-        const {error} = this.state;
+        const { error } = this.state;
+        const { token } = this.props;
 
-        const {token} = this.props;
-
-        if(token){
-            return <Redirect to="/profile" />;
+        if (token){
+            return <Redirect to="/profile" />
         }
-
-
         return (
             <section className="section login">
                 <div className="container">
@@ -71,6 +69,5 @@ export default class LoginPage extends React.Component{
                 </div>
             </section>
         );
-
-    }
-}
+    };
+};
