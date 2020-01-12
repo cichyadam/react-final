@@ -13,6 +13,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import LogoutPage from './components/LogoutPage/LogoutPage';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import HomePage from './components/HomePage/HomePage';
+import ChatBox from "./components/ChatBox/ChatBox";
 
 class App extends React.Component {
 
@@ -112,6 +113,7 @@ class App extends React.Component {
                                 )}
                             />
                         </Switch>
+                        <ChatBox name={username} />
                     </div>
                 </Router>
             </div>
