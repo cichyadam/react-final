@@ -30,7 +30,6 @@ const ListOfCategories = () => {
         }
     };
 
-
     if (categories.length === 0 || categories.meals === null) {
         return (
             <div className="loader">

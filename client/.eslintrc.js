@@ -29,5 +29,8 @@ module.exports = {
     "react/prop-types": 0,
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-console": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/button-has-type": "off",
+    "react/no-array-index-key": "off",
   },
 };

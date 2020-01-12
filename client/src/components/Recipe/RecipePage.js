@@ -5,10 +5,9 @@ import '../ListOfCategories/ListOfResults.css';
 import './RecipePage.css';
 import Recipe from './Recipe';
 
-
 const RecipePage = (props) => {
     const [recipe, setRecipe] = useState(null);
-
+    const { token, match } = props;
     const getRecipe = async (id) => {
         try {
             return (await RecipeService.getRecipe(id)).data;
@@ -34,9 +33,9 @@ const RecipePage = (props) => {
 
     for (let i = 1; i < 21; i++) {
         let ingredient = `strIngredient${i}`;
-        ingredient = ingredient.split('.').reduce((o, i) => o[i], recipeToShow);
+        ingredient = ingredient.split('.').reduce((o, index) => o[index], recipeToShow);
         let measurement = `strMeasure${i}`;
-        measurement = measurement.split('.').reduce((o, i) => o[i], recipeToShow);
+        measurement = measurement.split('.').reduce((o, index) => o[index], recipeToShow);
         ingredients.push({
             id: i,
             measurement,
@@ -54,13 +53,11 @@ const RecipePage = (props) => {
                 <Recipe
                     ingredients={ingredients}
                     recipeToShow={recipeToShow}
-                    token={props.token}
-                    recipeId={props.match.params.id}
+                    token={token}
+                    recipeId={match.params.id}
                 />
             </div>
         </section>
-
-
     );
 };
 

@@ -3,7 +3,7 @@ const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
 
 
 // creates hasher function using bcrypt - bcrypt syntax
-function hashPassword (user) {
+function hashPassword(user) {
     const SALT_FACTOR = 8;
 
     if (!user.changed('password')) {

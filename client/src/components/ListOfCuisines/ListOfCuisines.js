@@ -3,7 +3,7 @@ import { MoonLoader } from 'react-spinners';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import SearchFormCuisine from '../SearchForm/SearchFormCuisine';
-import SearchResults from "../SearchResults/SearchResults";
+import SearchResults from '../SearchResults/SearchResults';
 
 const ListOfCuisines = () => {
     const [cuisines, updateCuisines] = useState([]);
@@ -13,7 +13,6 @@ const ListOfCuisines = () => {
         const response = (await FilterService.getCuisines()).data;
         updateCuisines(response);
     };
-
 
     useEffect(() => {
         getCuisines();
@@ -36,13 +35,12 @@ const ListOfCuisines = () => {
                 <MoonLoader />
             </div>
         );
-    } return (
+    }
+    return (
         <section className="section">
             <SearchFormCuisine submitMethod={handleCuisine} cuisines={cuisines} />
             <SearchResults results={searchedCuisineRecipes} />
         </section>
-
-
     );
 };
 

@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken');
 const { Recipe } = require('../models');
+
 module.exports = {
-    async saveRecipe (req, res) {
+    async saveRecipe(req, res) {
         const { token } = req.query;
         const tokenDecoded = jwt.decode(token, { complete: true });
         const userId = tokenDecoded.payload.id;
         if (!userId) {
             res.status(500).json({
-                error: 'Invalid user'
+                error: 'Invalid user',
             });
         } else {
             const { recipe_id, name } = req.body;
@@ -19,9 +20,9 @@ module.exports = {
             try {
                 const response = await Recipe.findOrCreate({
                     where: {
-                        recipe_id: recipe.recipe_id
+                        recipe_id: recipe.recipe_id,
                     },
-                    defaults: recipe
+                    defaults: recipe,
                 });
                 res.status(200).send(response);
             } catch (err) {
@@ -29,7 +30,7 @@ module.exports = {
             }
         }
     },
-    async getSavedRecipes (req, res) {
+    async getSavedRecipes(req, res) {
         const { token } = req.query;
         const tokenDecoded = jwt.decode(token, { complete: true });
         const userId = tokenDecoded.payload.id;
@@ -45,19 +46,19 @@ module.exports = {
             res.status(500).json(err);
         }
     },
-    async removeSavedRecipe (req, res) {
+    async removeSavedRecipe(req, res) {
         const { id } = req.body;
         try {
             await Recipe.destroy({
                 where: {
-                    recipe_id: id
-                }
+                    recipe_id: id,
+                },
             });
             res.status(200).json({
-                message: 'Recipe removed'
-            })
+                message: 'Recipe removed',
+            });
         } catch (err) {
             res.status(500).json(err);
         }
-    }
+    },
 };

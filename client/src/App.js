@@ -39,7 +39,7 @@ class App extends React.Component {
 
     saveUser = (username) => {
         this.setState({username})
-    }
+    };
 
     saveToken = (token) => {
         this.setState({token});
