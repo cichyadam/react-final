@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchService from '../../services/SearchService';
 import '../SearchForm/SearchForm.css';
+import SearchResults from "../SearchResults/SearchResults";
 
 const ListOfIngredients = () => {
     const [searchedIngredientRecipes, setSearchedIngredient] = useState([]);
@@ -21,42 +22,19 @@ const ListOfIngredients = () => {
 
     return (
         <section className="section">
-            <form
-                className="searchForm"
-                onSubmit={(event) => handleIngredient(event)}
-            >
-                <p>Search by ingredient:</p>
-                <input id="ingredientSearch" type="text" />
-                <button type="submit">Search</button>
-            </form>
-            <div
-                className="recipes-container"
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4,1fr)',
-                }}
-            >
-                {(searchedIngredientRecipes.length !== 0
-                    && searchedIngredientRecipes.meals !== null
-                    && searchedIngredientRecipes.meals.map((recipe) => (
-                        <div key={recipe.idMeal} id={recipe.idMeal}>
-                            <img
-                                src={recipe.strMealThumb}
-                                alt={recipe.strMeal}
-                                style={{
-                                    width: '50%',
-                                }}
-                            />
-                            <h3>{recipe.strMeal}</h3>
-                            <NavLink to={`recipe/${recipe.idMeal}`}>
-                                <button type="submit">See recipe</button>
-                            </NavLink>
-                        </div>
-                    ))
-                ) || (
-                    <div className="noResult">There are no recipes found yet or we could not find any recipes to searched ingredient</div>
-                )}
+            <div className="container container-form">
+                <h2>Search by ingredient</h2>
+                <form
+                    className="form-search"
+                    onSubmit={(event) => handleIngredient(event)}
+                >
+                    <div className="input-wrapper">
+                        <input id="ingredientSearch" type="text" placeholder="Type ingredient" />
+                        <button className="btn btn-prim" type="submit">Search</button>
+                    </div>
+                </form>
             </div>
+            <SearchResults results={searchedIngredientRecipes} />
         </section>
     );
 };

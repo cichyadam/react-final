@@ -35,17 +35,15 @@ export default class SaveRecipe extends React.Component {
         const {message,status} = this.state;
         if (this.props.token === null) {
             return(
-                <p>Login or Register to save a recipe to favourite recipes</p>
+                <p>Login to save a recipe to your favourites</p>
             );
         };
             return (
                 <React.Fragment>
-                    <button onClick={this.handleSave}>Save to favourites</button>
+                    <button className="btn btn-prim" onClick={this.handleSave}>Save to favourites</button>
                     <div className={status}>{message}</div>
                 </React.Fragment>
 
             )
-        }
-
-
+    }
 }

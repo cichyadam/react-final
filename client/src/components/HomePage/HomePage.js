@@ -7,7 +7,7 @@ export default class HomePage extends React.Component {
             <div className="hero-image">
                 <div className="hero-text">
                     <h1>Recipe Website</h1>
-                    <p>Look up for many different recipes and save your favourite ones !</p>
+                    <p>Look up many different recipes and save your favourite ones!</p>
                 </div>
             </div>
         );

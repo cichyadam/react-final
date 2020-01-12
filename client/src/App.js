@@ -3,7 +3,7 @@ import './App.css';
 import {
     BrowserRouter as Router, Switch, Route, Link,
 } from 'react-router-dom';
-import AuthNav from './components/AuthNav/AuthNav';
+import Header from "./components/Header/Header";
 import ListOfCategories from './components/ListOfCategories/ListOfCategories';
 import ListOfCuisines from './components/ListOfCuisines/ListOfCuisines';
 import ListOfIngredients from './components/ListOfIngredients/ListOfIngredients';
@@ -58,65 +58,46 @@ class App extends React.Component {
 
 
         return (
-            <div className="App">
-                <Router>
-                    <div>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <div className="dropdown">
-                                        <a href="/ingredient">Search by</a>
-                                        <div className="dropdownContent">
-                                            <Link to="/ingredient">Ingredient</Link>
-                                            <Link to="/category">Category</Link>
-                                            <Link to="/cuisine">Cuisine</Link>
-                                        </div>
-                                    </div>
-                                </li>
-                                <AuthNav token={token}/>
-                            </ul>
-                        </nav>
-                        <Switch>
-                            <Route exact path="/">
-                                <HomePage/>
-                            </Route>
-                            <Route path="/register">
-                                <RegisterPage token={token} saveToken={this.saveToken} saveUser={this.saveUser}/>
-                            </Route>
-                            <Route path="/login">
-                                <LoginPage token={token} saveToken={this.saveToken} saveUser={this.saveUser}/>
-                            </Route>
-                            <Route path="/logout">
-                                <LogoutPage logout={this.removeToken} />
-                            </Route>
-                            <Route
-                                path="/profile"
-                                render={(props) => <ProfilePage {...props} username={username} token={token} />}
-                            />
-                            <Route path="/ingredient">
-                                <ListOfIngredients />
-                            </Route>
-                            <Route path="/category">
-                                <ListOfCategories />
-                            </Route>
-                            <Route path="/cuisine">
-                                <ListOfCuisines />
-                            </Route>
-                            <Route
-                                exact
-                                path="/recipe/:id"
-                                render={(props) => (
-                                    <RecipePage {...props} token={token} />
-                                )}
-                            />
-                        </Switch>
-                        <ChatBox name={username} />
-                    </div>
-                </Router>
-            </div>
+            <Router>
+                <Header token={token} />
+                <main>
+                    <Switch>
+                        <Route exact path="/">
+                            <HomePage/>
+                        </Route>
+                        <Route path="/register">
+                            <RegisterPage token={token} saveToken={this.saveToken} saveUser={this.saveUser}/>
+                        </Route>
+                        <Route path="/login">
+                            <LoginPage token={token} saveToken={this.saveToken} saveUser={this.saveUser}/>
+                        </Route>
+                        <Route path="/logout">
+                            <LogoutPage logout={this.removeToken} />
+                        </Route>
+                        <Route
+                            path="/profile"
+                            render={(props) => <ProfilePage {...props} username={username} token={token} />}
+                        />
+                        <Route path="/ingredient">
+                            <ListOfIngredients />
+                        </Route>
+                        <Route path="/category">
+                            <ListOfCategories />
+                        </Route>
+                        <Route path="/cuisine">
+                            <ListOfCuisines />
+                        </Route>
+                        <Route
+                            exact
+                            path="/recipe/:id"
+                            render={(props) => (
+                                <RecipePage {...props} token={token} />
+                            )}
+                        />
+                    </Switch>
+                    {token && <ChatBox name={username} />}
+                </main>
+            </Router>
         );
 
     }

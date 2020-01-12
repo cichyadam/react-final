@@ -51,14 +51,12 @@ const RecipePage = (props) => {
     return (
         <section className="section">
             <div className="container">
-                <div className="Recipe">
-                    <Recipe
-                        ingredients={ingredients}
-                        recipeToShow={recipeToShow}
-                        token={props.token}
-                        recipeId={props.match.params.id}
-                    />
-                </div>
+                <Recipe
+                    ingredients={ingredients}
+                    recipeToShow={recipeToShow}
+                    token={props.token}
+                    recipeId={props.match.params.id}
+                />
             </div>
         </section>
 

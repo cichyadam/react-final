@@ -1,30 +1,31 @@
 import React from 'react';
 import SaveRecipe from '../SaveRecipe/SaveRecipe';
 
-// eslint-disable-next-line react/prefer-stateless-function
-export default class Recipe extends React.Component {
-    render() {
-        const {
-            recipeToShow, ingredients, token, recipeId,
-        } = this.props;
+const Recipe = (props) => {
+    const {
+        recipeToShow, ingredients, token, recipeId,
+    } = props;
 
-        const recipeData = {
-            recipe_id: recipeId,
-            name: recipeToShow.strMeal,
-        };
+    const recipeData = {
+        recipe_id: recipeId,
+        name: recipeToShow.strMeal,
+    };
 
-        return (
-            <>
-                <div className="image">
-                    <img
-                        src={recipeToShow.strMealThumb}
-                        alt={recipeToShow.strMeal}
-                    />
-                    <SaveRecipe token={token} recipeData={recipeData} />
+    return (
+        <div className="recipe-full">
+            <div className="grid-2">
+                <div>
+                    <div className="div-img">
+                        <img
+                            className="img"
+                            src={recipeToShow.strMealThumb}
+                            alt={recipeToShow.strMeal}
+                        />
+                    </div>
                 </div>
-                <div className="instructions">
-                    <h2>{recipeToShow.strMeal}</h2>
-                    <p className="strong">Ingredients:</p>
+                <div>
+                    <h1>{recipeToShow.strMeal}</h1>
+                    <h3>Ingredients:</h3>
                     <ul>
                         {ingredients.map((ingredient) => (
                             <li key={ingredient.id}>
@@ -34,10 +35,15 @@ export default class Recipe extends React.Component {
                             </li>
                         ))}
                     </ul>
-                    <p className="strong">Instructions:</p>
-                    <p>{recipeToShow.strInstructions}</p>
+                    <SaveRecipe token={token} recipeData={recipeData} />
                 </div>
-            </>
-        );
-    }
+            </div>
+            <div className="instructions">
+                <p className="strong">Instructions:</p>
+                <p>{recipeToShow.strInstructions}</p>
+            </div>
+        </div>
+    );
 }
+
+export default Recipe;
