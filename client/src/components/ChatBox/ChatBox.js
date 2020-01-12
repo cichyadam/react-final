@@ -21,11 +21,13 @@ const ChatBox = (props) => {
     return (
         <div className="float_box float-right float-bottom">
             <h2>We are here to help you, {props.name}</h2>
-            <div>
-                {(chatHistory.length) ? chatHistory.map((m, i) => <div key={i}>{m}</div>) : null}
+            <div className="chatbox">
+                {(chatHistory.length) ? chatHistory.map((m, i) => <span><div className="message" key={i}>{m}</div><br/></span>) : null}
             </div>
-            <input onChange={(evt) => setMessage(evt.target.value)} placeholder="What's on yur mind?" value={message}/>
-            <button onClick={handleSend}>Send</button>
+            <div className="input-wrapper input-chatbox">
+                <input onChange={(evt) => setMessage(evt.target.value)} placeholder="What's on your mind?" value={message}/>
+                <button className="btn btn-prim" onClick={handleSend}>Send</button>
+            </div>
         </div>
     )
 };

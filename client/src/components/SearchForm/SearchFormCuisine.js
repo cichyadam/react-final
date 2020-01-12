@@ -1,16 +1,16 @@
 import React from 'react';
 import './SearchForm.css';
 // eslint-disable-next-line react/prefer-stateless-function
-export default class SearchFormCategory extends React.Component {
-    render() {
-        const { submitMethod, cuisines } = this.props;
-        return (
-            <>
-                <form
-                    className="searchForm"
-                    onSubmit={((event) => submitMethod(event))}
-                >
-                    <p>Search by cuisine</p>
+const SearchFormCategory = (props) => {
+    const { submitMethod, cuisines } = props;
+    return (
+        <div className="container container-form">
+            <h2>Search by cuisine</h2>
+            <form
+                className="form-search"
+                onSubmit={((event) => submitMethod(event))}
+            >
+                <div className="input-wrapper">
                     <select id="cuisines" name="cuisines">
                         {
                             cuisines.meals.map((cuisine, index) => (
@@ -23,9 +23,11 @@ export default class SearchFormCategory extends React.Component {
                             ))
                         }
                     </select>
-                    <button type="submit">Search</button>
-                </form>
-            </>
-        );
-    }
+                    <button className="btn btn-prim">Search</button>
+                </div>
+            </form>
+        </div>
+    );
 }
+
+export default SearchFormCategory;

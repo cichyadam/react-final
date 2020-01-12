@@ -4,7 +4,7 @@ import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import './ListOfResults.css';
 import SearchFormCategory from '../SearchForm/SearchFormCategory';
-import SearchResultsCategories from '../SearchResults/SearchResultsCategories';
+import SearchResults from '../SearchResults/SearchResults';
 
 const ListOfCategories = () => {
     const [categories, updateCategories] = useState([]);
@@ -41,7 +41,7 @@ const ListOfCategories = () => {
     return (
         <section className="section">
             <SearchFormCategory submitMethod={handleCategory} categories={categories} />
-            <SearchResultsCategories searchedCategoryRecipes={searchedCategoryRecipes} />
+            <SearchResults results={searchedCategoryRecipes} />
         </section>
     );
 };

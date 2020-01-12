@@ -10,6 +10,14 @@ export default class ProfilePage extends React.Component{
             favourites:[]
         }
     };
+
+    componentDidMount() {
+        const { username, token } = this.props
+        if (username) {
+            this.getFavourites()
+        }
+    }
+
     componentDidUpdate(prevProps, prevState) {
         if (prevState.favourites === this.state.favourites) {
             this.getFavourites()

@@ -3,7 +3,7 @@ import { MoonLoader } from 'react-spinners';
 import FilterService from '../../services/FilterService';
 import SearchService from '../../services/SearchService';
 import SearchFormCuisine from '../SearchForm/SearchFormCuisine';
-import SearchResultsCuisines from '../SearchResults/SearchResultsCuisines';
+import SearchResults from "../SearchResults/SearchResults";
 
 const ListOfCuisines = () => {
     const [cuisines, updateCuisines] = useState([]);
@@ -39,7 +39,7 @@ const ListOfCuisines = () => {
     } return (
         <section className="section">
             <SearchFormCuisine submitMethod={handleCuisine} cuisines={cuisines} />
-            <SearchResultsCuisines searchedCuisineRecipes={searchedCuisineRecipes} />
+            <SearchResults results={searchedCuisineRecipes} />
         </section>
 
 
