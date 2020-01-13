@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
     console.log('\x1b[32m', 'Socket joined', socket.id, '\x1b[0m');
 
     socket.on('I need help', (data) => {
-        io.emit('user said', { message: escape(data.message) });
+        socket.emit('user said', { message: escape(data.message) });
     });
 
     socket.on('disconnect', () => {

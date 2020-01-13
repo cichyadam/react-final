@@ -23,8 +23,8 @@ const ChatBox = (props) => {
             <h2>We are here to help you, { name }</h2>
             <div className="chatbox">
                 {(chatHistory.length) ? chatHistory.map((m, i) => (
-                    <span>
-                        <div className="message" key={i}>{m}</div>
+                    <span key={i}>
+                        <div className="message">{m}</div>
                         <br />
                     </span>
                 )) : null}

@@ -6,6 +6,7 @@ const SearchResults = (props) => {
     return (
         <div className="container results">
             {(results.length !== 0
+                && results.meals !== null
                 && results.meals.map((recipe) => (
                     <NavLink
                         className="recipe-item"
